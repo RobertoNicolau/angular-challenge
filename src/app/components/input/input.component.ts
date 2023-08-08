@@ -5,10 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './input.component.html',
 })
 export class InputComponent {
-  @Input() answer: string;
+  @Input() answer: string = '';
 
-  constructor() {
-    this.answer = '';
-    console.log(this.answer);
-  }
+  constructor() {}
 }
