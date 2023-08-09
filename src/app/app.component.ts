@@ -7,5 +7,9 @@ import { ApiService } from './services/api.service';
 })
 export class AppComponent {
   title = 'angular-project-frontend';
-  answer = 'Hello World';
+  answer: string = '';
+
+  onClick(){
+    this.answer = 'Hello World';
+  }
 }

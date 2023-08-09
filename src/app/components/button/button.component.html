@@ -1,1 +1,9 @@
-<button (click)="sendAnswer()"class="rounded-sm w-[90vw] px-6 py-3 bg-purple-900 hover:bg-purple-700 text-center text-zinc-50 font-bold" type="button">Enviar</button>
+<button (click)="handleClick();show()"class="flex items-center justify-center rounded-sm w-[90vw] px-6 py-3 bg-purple-900
+hover:bg-purple-700 text-center text-zinc-50 font-bold" type="button">
+  <p *ngIf="loading === false; else loadingSpinner" >Enviar</p>
+  <ng-template #loadingSpinner>
+    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="animate-spin fill-purple-500">
+      <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"/>
+    </svg>
+  </ng-template>
+</button>

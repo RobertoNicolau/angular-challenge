@@ -6,10 +6,14 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './button.component.html',
 })
 export class ButtonComponent {
-  @Output() clicked = new  EventEmitter<void>();
+  @Output() click = new  EventEmitter<any>();
+  handleClick(): void{
+    this.click.emit();
+  }
 
-  sendAnswer(){
-    this.clicked.emit();
+  loading: boolean = false;
+  show(): void{
+    this.loading = !this.loading
   }
 
 }
