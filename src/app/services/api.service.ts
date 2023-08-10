@@ -1,24 +1,37 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Observable, catchError } from 'rxjs';
+import {Injectable} from '@angular/core';
+import axios from 'axios';
+import {Observable} from 'rxjs';
 
-interface RequestData {
-  url: string;
-  data: string;
-}
+type Request = {
+	data: any;
+	url: string;
+};
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
+
 export class ApiService {
-  handleError: any;
+	url = 'http://localhost:3333/answer';
 
-  constructor(private http: HttpClient) { }
+	sendData(answer: string): Observable<any> {
+		const data = {answer};
 
-  postData({url, data}: RequestData): Observable<any> {
-    url = 'localhost:3333'
-    return this.http.post(url, data).pipe(
-      catchError(this.handleError('addHero', data))
-    );;
-  }
+		return new Observable(observer => {
+			axios.post<Request>(this.url, data)
+				.then(response => {
+					observer.next(response.data);
+					observer.complete();
+				})
+				.catch(error => {
+					observer.error(error);
+					console.table(error.response.data);
+					observer.complete();
+				});
+		});
+	}
+
+	async get() {
+		return axios.get(this.url);
+	}
 }

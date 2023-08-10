@@ -1,4 +1,4 @@
-<button (click)="handleClick();show()"class="flex items-center justify-center rounded-sm w-[90vw] px-6 py-3 bg-purple-900
+<button (click)="handleClick()"class="flex items-center justify-center rounded-sm w-[90vw] md:w-[50vw] px-6 py-3 bg-purple-900
 hover:bg-purple-700 text-center text-zinc-50 font-bold" type="button">
   <p *ngIf="loading === false; else loadingSpinner" >Enviar</p>
   <ng-template #loadingSpinner>

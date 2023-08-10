@@ -5,10 +5,21 @@
     Header component test language
     <span
       class="text-purple-700 tracking-tighter bg-zinc-50 px-3 text-center rounded-md"
-      >ANGULAR</span
-    >
+      >CONVEM</span
+    > ?
   </h1>
-  <custom-input [answer]="answer"/>
-  <custom-button (click)="onClick" />
+  <!-- <custom-input [answer]="_answer"/> -->
+  <input
+  class="rounded-sm w-[90vw] md:w-[50vw] px-6 py-3 text-zinc-700 text-center font-bold placeholder:font-normal outline-none focus:outline-purple-700 focus:outline-3 bg-zinc-100"
+  type="text"
+  placeholder="Digite 'Sim' para embarcar"
+  id="input-data"
+  [(ngModel)]="answer"
+  name="answer"
+/>
+  <custom-button (click)="onClick()" [loading]="loading"/>
+  <div *ngIf="message !== ''" class="bg-zinc-100 text-center font-semibold text-xl fixed md:top-20 top-5 px-6 md:px-20 py-6 md:py-16 text-purple-700 rounded-lg mx-4" >
+    {{message}}
+  </div>
 </div>
 <router-outlet></router-outlet>
